@@ -28,10 +28,16 @@ mongoose.connect(uri, {
 
 //connecting to bd using the uri
 const connection = mongoose.connection;
-connection.once('open',()=>{
+connection.once('open',() => {
     console.log('hurray! connected to mongodb!')
 });
 
+//tell the server to require the files and use the routes files
+const exercisesRouter = require('./routes/exercises');
+const usersRouter = require('./routes/users');
+
+app.use('/exercises', exercisesRouter);
+app.use('/users', usersRouter);
 
 app.listen(port, () => {
     console.log('Hello from Syeda\'s exercise tracker practice mood 2');
