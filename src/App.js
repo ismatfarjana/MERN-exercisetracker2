@@ -1,14 +1,21 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom"; // easy rout in between different components
 import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
 
 function App() {
   return (
-    <div className="container">
-        <p>
-          Hello World!
-        </p>
-    </div>
+    <Router>
+        <div className="container">
+            <Navbar />
+            <br />
+            <Route path="/" exact component={ExercisesList} />
+            <Route path="/edit/:id" component={EditExercise} />
+            <Route path="/create" component={CreateExercise} />
+            <Route path="/user" component={CreateUser} />
+        </div>
+    </Router>
+
   );
 }
 
